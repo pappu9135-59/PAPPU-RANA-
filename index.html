@@ -1,5 +1,338 @@
-<p>hello world</p>
-for i_  in range
-print <iframe src="" frameborder="0"></iframe>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Literary Haven - Your Digital Bookstore</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-brand">
+                <i class="fas fa-book-open"></i>
+                <span>Literary Haven</span>
+            </div>
+            <div class="nav-menu">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#books" class="nav-link">Books</a>
+                <a href="#genres" class="nav-link">Genres</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-actions">
+                <button class="search-toggle" id="searchToggle">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="user-toggle" id="userToggle">
+                    <i class="fas fa-user"></i>
+                </button>
+                <button class="cart-toggle" id="cartToggle">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+            </div>
+        </nav>
+        
+        <!-- Search Bar -->
+        <div class="search-container" id="searchContainer">
+            <div class="search-wrapper">
+                <input type="text" id="searchInput" placeholder="Search for books, authors, or genres...">
+                <button class="search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </header>
 
-print("hello world")
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <!-- Hero Banner -->
+            <div class="hero-banner">
+                <div class="hero-content">
+                    <h1 class="hero-title">Discover Your Next Great Read</h1>
+                    <p class="hero-subtitle">Explore thousands of books across all genres, from timeless classics to contemporary bestsellers.</p>
+                    <button class="cta-button" onclick="scrollToSection('books')">
+                        <i class="fas fa-book"></i>
+                        Browse Books
+                    </button>
+                </div>
+                <div class="hero-visual">
+                    <div class="floating-books">
+                        <div class="book book-1"></div>
+                        <div class="book book-2"></div>
+                        <div class="book book-3"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured Books Carousel -->
+            <div class="featured-section">
+                <h2 class="section-title">Featured Books</h2>
+                <div class="carousel-container">
+                    <button class="carousel-btn prev" id="prevBtn">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="carousel" id="featuredCarousel">
+                        <!-- Featured books will be populated by JavaScript -->
+                    </div>
+                    <button class="carousel-btn next" id="nextBtn">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Genre Grid -->
+            <div class="genres-section">
+                <h2 class="section-title">Explore by Genre</h2>
+                <div class="genres-grid" id="genresGrid">
+                    <!-- Genres will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Personalized Recommendations -->
+            <div class="recommendations-section">
+                <h2 class="section-title">Recommended for You</h2>
+                <div class="books-grid" id="recommendationsGrid">
+                    <!-- Recommendations will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Books Section -->
+        <section id="books" class="section">
+            <div class="books-header">
+                <h2 class="section-title">All Books</h2>
+                <div class="books-controls">
+                    <div class="view-toggle">
+                        <button class="view-btn active" data-view="grid">
+                            <i class="fas fa-th"></i>
+                        </button>
+                        <button class="view-btn" data-view="list">
+                            <i class="fas fa-list"></i>
+                        </button>
+                    </div>
+                    <div class="filter-controls">
+                        <select id="genreFilter">
+                            <option value="">All Genres</option>
+                        </select>
+                        <select id="sortFilter">
+                            <option value="title">Sort by Title</option>
+                            <option value="author">Sort by Author</option>
+                            <option value="price">Sort by Price</option>
+                            <option value="rating">Sort by Rating</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="books-container">
+                <div class="books-grid" id="booksGrid">
+                    <!-- Books will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Genres Section -->
+        <section id="genres" class="section">
+            <h2 class="section-title">Browse by Genre</h2>
+            <div class="genres-detail-grid" id="genresDetailGrid">
+                <!-- Detailed genre sections will be populated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section">
+            <div class="about-content">
+                <h2 class="section-title">About Literary Haven</h2>
+                <div class="about-grid">
+                    <div class="about-text">
+                        <p>Welcome to Literary Haven, your digital sanctuary for book lovers. We believe that every book has the power to transport us to new worlds, challenge our perspectives, and enrich our lives.</p>
+                        <p>Founded with a passion for literature and a commitment to making great books accessible to everyone, we curate a diverse collection spanning all genres and interests.</p>
+                        <div class="about-stats">
+                            <div class="stat">
+                                <span class="stat-number">10,000+</span>
+                                <span class="stat-label">Books</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">50+</span>
+                                <span class="stat-label">Genres</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">1000+</span>
+                                <span class="stat-label">Authors</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-visual">
+                        <div class="about-image">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="faq-section">
+                <h3 class="section-subtitle">Frequently Asked Questions</h3>
+                <div class="faq-container" id="faqContainer">
+                    <!-- FAQ items will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <h2 class="section-title">Get in Touch</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>hello@literaryhaven.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+1 (555) 123-4567</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>123 Book Street, Reading City, RC 12345</span>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i>
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Sidebar Modals -->
+    
+    <!-- User Profile Modal -->
+    <div class="modal" id="userModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>User Profile</h3>
+                <button class="modal-close" id="userModalClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="profile-section" id="profileSection">
+                    <!-- Profile content will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div class="modal" id="cartModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Shopping Cart</h3>
+                <button class="modal-close" id="cartModalClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="cart-items" id="cartItems">
+                    <!-- Cart items will be populated by JavaScript -->
+                </div>
+                <div class="cart-summary">
+                    <div class="cart-total">
+                        <span>Total:</span>
+                        <span id="cartTotal">$0.00</span>
+                    </div>
+                    <button class="checkout-btn" id="checkoutBtn">
+                        <i class="fas fa-credit-card"></i>
+                        Proceed to Checkout
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Book Detail Modal -->
+    <div class="modal book-detail-modal" id="bookDetailModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="bookDetailTitle">Book Details</h3>
+                <button class="modal-close" id="bookDetailModalClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="bookDetailContent">
+                <!-- Book details will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal" id="checkoutModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Checkout</h3>
+                <button class="modal-close" id="checkoutModalClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="checkout-form" id="checkoutForm">
+                    <!-- Checkout form will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="success-content">
+                    <i class="fas fa-check-circle"></i>
+                    <h3>Order Placed Successfully!</h3>
+                    <p>Thank you for your purchase. Your order has been confirmed.</p>
+                    <button class="success-btn" id="successBtn">Continue Shopping</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner">
+            <i class="fas fa-book-open"></i>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
